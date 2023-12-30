@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Movie from "./Movie";
+
 const MovieBox = function ({ movies, children }) {
   const [isOpen, setIsOpen] = useState(true);
-  console.log(movies);
   return (
     <div className="box">
       <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
