@@ -1,15 +1,5 @@
-import MovieBox from "./MovieBox";
-import Summary from "./Summary";
-
-const Main = function ({ movies, watched }) {
-  return (
-    <main className="main">
-      <MovieBox movies={movies} />
-      <MovieBox movies={watched}>
-        <Summary movies={watched} />
-      </MovieBox>
-    </main>
-  );
+const Main = function ({ children }) {
+  return <main className="main">{children}</main>;
 };
 
 export default Main;
