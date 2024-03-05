@@ -1,4 +1,4 @@
-const MovieDetails = function ({ movie }) {
+const MovieDetails = function ({ movie, handleRemoveWatchedMovie }) {
   return !movie.runtime ? (
     <div>
       <p>
@@ -20,6 +20,15 @@ const MovieDetails = function ({ movie }) {
         <span>⏳</span>
         <span>{movie.runtime} min</span>
       </p>
+      <button
+        className="btn-delete"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleRemoveWatchedMovie(movie.imdbID);
+        }}
+      >
+        X
+      </button>
     </div>
   );
 };

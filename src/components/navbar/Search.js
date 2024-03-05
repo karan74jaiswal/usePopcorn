@@ -1,7 +1,23 @@
-import { useState } from "react";
+import { useRef, useEffect } from "react";
 
-const Search = function () {
-  const [query, setQuery] = useState("");
+const Search = function ({ query, setQuery }) {
+  const inputElement = useRef(null);
+
+  useEffect(() => {
+    function callBack(e) {
+      if (
+        e.key === "Enter" &&
+        document.activeElement !== inputElement.current
+      ) {
+        inputElement.current.focus();
+        setQuery("");
+      }
+    }
+    document.addEventListener("keypress", callBack);
+
+    return () => document.removeEventListener("keypress", callBack);
+  }, [setQuery]);
+
   return (
     <input
       className="search"
@@ -9,6 +25,7 @@ const Search = function () {
       placeholder="Search movies..."
       value={query}
       onChange={(e) => setQuery(e.target.value)}
+      ref={inputElement}
     />
   );
 };
