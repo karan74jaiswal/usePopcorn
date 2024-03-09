@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 const containerstyle = {
   display: "flex",
@@ -29,6 +29,12 @@ const StarRating = function ({
   const [rating, setRating] = useState(defaultRating);
 
   const [hoverRating, setHoverRating] = useState(0);
+  const selectedRatingCounter = useRef([]);
+
+  useEffect(() => {
+    if (rating > 0) selectedRatingCounter.current.push(rating);
+  }, [rating]);
+
   function handleRate(i) {
     setRating(i + 1);
     onSetRating(i + 1);

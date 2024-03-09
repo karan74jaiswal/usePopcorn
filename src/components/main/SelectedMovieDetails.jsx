@@ -1,6 +1,7 @@
 import StarRating from "./StarRating";
 import { useState, useEffect } from "react";
 import Loader from "../Loader";
+import { useKey } from "../../hooks/useKey";
 const SelectedMovieDetails = function ({
   selectedMovieID,
   reset,
@@ -44,17 +45,24 @@ const SelectedMovieDetails = function ({
     };
   }, [movie]);
 
-  useEffect(() => {
-    const closeSelectedMovieDetails = function (e) {
-      if (e.code === "KeyQ") reset();
-    };
-    document.addEventListener("keydown", closeSelectedMovieDetails);
+  useKey("KeyQ", reset);
 
-    return () => {
-      document.removeEventListener("keydown", closeSelectedMovieDetails);
-    };
-  }, [reset]);
+  // useEffect(() => {
+  //   function closeSelectedMovieDetails(e) {
+  //     console.log(e);
+  //     if (e.code === "KeyQ") reset();
+  //   }
+  //   document.addEventListener("keydown", closeSelectedMovieDetails);
 
+  //   return () => {
+  //     document.removeEventListener("keydown", closeSelectedMovieDetails);
+  //   };
+  // }, [reset]);
+
+  // useEffect(() => {
+  //   // selectedRatingCounter.current++;
+  //   console.log(selectedRatingCounter.current);
+  // }, [myRating]);
   // JSX
   return (
     <div className="details">
