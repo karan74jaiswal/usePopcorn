@@ -27,7 +27,6 @@ const StarRating = function ({
   };
 
   const [rating, setRating] = useState(defaultRating);
-
   const [hoverRating, setHoverRating] = useState(0);
   const selectedRatingCounter = useRef([]);
 
