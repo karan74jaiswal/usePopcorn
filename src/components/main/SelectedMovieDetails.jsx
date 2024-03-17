@@ -22,7 +22,7 @@ const SelectedMovieDetails = function ({
       setIsLoading(true);
       try {
         const movieDetails = await fetch(
-          `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${selectedMovieID}`,
+          `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${selectedMovieID}`,
           { signal: controller.signal }
         ).then((res) => res.json());
 

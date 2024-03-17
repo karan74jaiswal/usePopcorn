@@ -13,7 +13,7 @@ export function useMovies(query) {
         setIsLoading(true);
 
         const { Search: movieList } = await fetch(
-          `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${query}`,
+          `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${query}`,
           { signal: controller.signal }
         ).then((res) => res.json());
         if (!movieList) throw new Error("No movies with that name");
