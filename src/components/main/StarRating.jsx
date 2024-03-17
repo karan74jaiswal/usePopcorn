@@ -48,7 +48,7 @@ const StarRating = function ({
   }
 
   return (
-    <div className="rating" style={containerstyle} className={className}>
+    <div className={`rating ${className}`} style={containerstyle}>
       <div style={startContainerStyle}>
         {Array.from({ length: maxRating }, (_, i) => (
           <Star
